@@ -18,9 +18,11 @@ Color kOpacityColorDark = Colors.black38;
 
 //DEFAULT THINGS
 BorderRadius kprimaryBorderRadius = BorderRadius.circular(10);
-Radius ksecondaryBorderRadius = Radius.circular(15);
+Radius ksecondaryBorderRadius = Radius.circular(10);
 EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
 EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(20);
+EdgeInsets kPrimaryEdgeInsetsSymmetric =
+    EdgeInsets.symmetric(horizontal: 5, vertical: 10);
 
 //THEME DATA
 ThemeData themeData() {
