@@ -19,9 +19,9 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   void initState() {
     _pages = [
-      {'page': ProfileScreen(), 'title': 'Perfil'},
-      {'page': ConsultationToolsScreen(), 'title': 'Herramientas de consulta'},
-      {'page': MyHomePage(), 'title': 'Home'},
+      {'page': ProfileScreen(), 'title': ''},
+      {'page': ConsultationToolsScreen(), 'title': ''},
+      {'page': MyHomePage(), 'title': ''},
     ];
     super.initState();
   }

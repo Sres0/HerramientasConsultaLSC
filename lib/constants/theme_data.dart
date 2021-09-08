@@ -49,6 +49,8 @@ ThemeData themeData() {
       bodyText2: _textStyle.copyWith(fontWeight: FontWeight.bold),
     ),
     appBarTheme: AppBarTheme(
+      color: kPrimaryColorDark,
+      elevation: 0,
       centerTitle: true,
     ),
   );
