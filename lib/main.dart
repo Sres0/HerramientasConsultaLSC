@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (ctx) => TabsScreen(),
+        MyHomePage.routeName: (ctx) => MyHomePage(),
         ConsultationToolsScreen.routeName: (ctx) => ConsultationToolsScreen(),
         ProfileScreen.routeName: (ctx) => ProfileScreen()
       },
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  static const routeName = 'home';
   MyHomePage();
 
   @override
