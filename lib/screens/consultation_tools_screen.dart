@@ -16,12 +16,12 @@ class ConsultationToolsScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      body: Center(
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Container(
                 height: MediaQuery.of(context).size.height * 0.55,
                 child: GridView(
                   padding: kPrimaryEdgeInsetsSymmetric,
@@ -29,9 +29,9 @@ class ConsultationToolsScreen extends StatelessWidget {
                   gridDelegate: _gridDelegate,
                 ),
               ),
-              GifNButtons(),
-            ],
-          ),
+            ),
+            GifNButtons(),
+          ],
         ),
       ),
     );
