@@ -12,9 +12,6 @@ class ConsultationToolsScreen extends StatelessWidget {
     var _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
       mainAxisExtent: 200,
       maxCrossAxisExtent: 300,
-      childAspectRatio: 4 / 3,
-      crossAxisSpacing: 4,
-      mainAxisSpacing: 4,
     );
 
     return Scaffold(
