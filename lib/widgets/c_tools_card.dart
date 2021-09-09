@@ -16,21 +16,20 @@ class CToolCard extends StatelessWidget {
 
     return InkWell(
       onTap: () => _selectTool(_cTool),
-      splashColor: kPrimaryColorDark,
+      splashColor: kPrimaryColorLight,
       borderRadius: kprimaryBorderRadius,
       child: Card(
         elevation: kPrimaryElevation,
         margin: kPrimaryEdgeInsets,
         shape: RoundedRectangleBorder(borderRadius: kprimaryBorderRadius),
-        color: kPrimaryColorLight,
+        color: kSecondaryColorLight,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(7, 7, 7, 0),
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
               child: ClipRRect(
                 borderRadius: kprimaryBorderRadius,
-                // child: Text('hi'),
                 child: Image(
                   image: AssetImage('images/c_tools_' + _cTool.id + '.jpg'),
                   height: 130,
@@ -41,7 +40,7 @@ class CToolCard extends StatelessWidget {
             ),
             Container(
               height: 40,
-              padding: kSecondaryEdgeInsetsSymmetric,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
               child: Center(
                 child: Text(
                   _cTool.title,

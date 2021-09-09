@@ -22,7 +22,7 @@ class ConsultationToolsScreen extends StatelessWidget {
               Container(
                 height: MediaQuery.of(context).size.height * 0.55,
                 child: GridView(
-                  padding: kPrimaryEdgeInsetsSymmetric,
+                  // padding: kPrimaryEdgeInsetsSymmetric,
                   children: CTOOLS.map((cat) => CToolCard(cat)).toList(),
                   gridDelegate: _gridDelegate,
                 ),

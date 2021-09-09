@@ -32,20 +32,17 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  final _noShadow = [Shadow(offset: Offset.zero, blurRadius: 0)];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(_pages[_selectedIndex]['title'] as String)),
       body: _pages[_selectedIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
+        // backgroundColor: kPrimaryColor,
         selectedItemColor: kPrimaryColorLight,
-        unselectedItemColor: kPrimaryColor,
-        selectedLabelStyle: TextStyle(shadows: _noShadow),
-        unselectedLabelStyle: TextStyle(shadows: _noShadow),
+        unselectedItemColor: kSecondaryColorLight,
         currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
         onTap: _selectPage,
         backgroundColor: kPrimaryColor,
         items: [
@@ -59,7 +56,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Inicio',
           ),
         ],
       ),

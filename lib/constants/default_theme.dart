@@ -1,58 +1,54 @@
 import 'package:flutter/material.dart';
-
-//SPECIAL COLORS
-const Color kAwakenColor = Colors.white;
-const Color kAbilityColor = Colors.blue;
-const Color kAptitudeColor = Colors.green;
-const Color kAdventureColor = Colors.orange;
-const Color kAcademyColor = Colors.yellow;
-const Color kAwarenessColor = Colors.purple;
-const Color kAcumenColor = Colors.grey;
-const Color kReadColor = Colors.red;
+import 'package:hexcolor/hexcolor.dart';
 
 //PRIMARY COLORS
-Color kPrimaryColor = Colors.grey.shade700;
-Color kPrimaryColorLight = Colors.grey.shade300;
-Color kPrimaryColorDark = Colors.white;
+Color kPrimaryColor = HexColor('0e1b4d');
+Color kPrimaryColorLight = HexColor('46b6c2');
+Color kSecondaryColor = HexColor('c4c4c4');
+Color kSecondaryColorDark = Colors.black;
+Color kSecondaryColorLight = Colors.white;
+Color kAccentColor = HexColor('442c2e');
+
+Color kPrimaryColorDark = Colors.grey.shade900;
 Color kOpacityColorDark = Colors.black38;
 
 //DEFAULT THINGS
 BorderRadius kprimaryBorderRadius = BorderRadius.circular(10);
-Radius ksecondaryBorderRadius = Radius.circular(10);
+Radius ksecondaryBorderRadius = Radius.circular(10); //BYE
 EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
-EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(20);
+EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(5);
 EdgeInsets kPrimaryEdgeInsetsSymmetric =
     EdgeInsets.symmetric(horizontal: 5, vertical: 10);
-EdgeInsets kSecondaryEdgeInsetsSymmetric =
-    EdgeInsets.symmetric(horizontal: 7, vertical: 0);
-double kPrimaryElevation = 6.0;
+double kPrimaryElevation = 8.0;
 
 //THEME DATA
 ThemeData themeData() {
   final TextStyle _textStyle = TextStyle(
-      color: kPrimaryColorLight,
-      shadows: [Shadow(offset: Offset.fromDirection(0, 1.5), blurRadius: 5)]);
+    color: kSecondaryColorDark,
+  );
 
+  final TextTheme _textTheme = TextTheme(
+    headline4: _textStyle,
+    headline5: _textStyle,
+    headline6: _textStyle.copyWith(
+      fontWeight: FontWeight.bold,
+      fontSize: 24, //Non responsive
+    ),
+    subtitle1: _textStyle,
+    subtitle2: _textStyle.copyWith(fontWeight: FontWeight.bold),
+    bodyText1: _textStyle,
+    bodyText2: _textStyle.copyWith(fontWeight: FontWeight.bold),
+  );
   return ThemeData(
-    canvasColor: kPrimaryColorDark,
+    canvasColor: kSecondaryColorLight,
     primarySwatch: Colors.grey,
     primaryColor: kPrimaryColor,
     primaryColorLight: kPrimaryColorLight,
-    primaryColorDark: kPrimaryColorDark,
-    textTheme: TextTheme(
-      headline4: _textStyle,
-      headline5: _textStyle,
-      headline6: _textStyle.copyWith(fontWeight: FontWeight.bold),
-      subtitle1: _textStyle.copyWith(
-        shadows: [Shadow(offset: Offset.zero, blurRadius: 0)],
-        color: kPrimaryColorDark,
-      ),
-      subtitle2: _textStyle.copyWith(fontWeight: FontWeight.bold),
-      bodyText1: _textStyle,
-      bodyText2: _textStyle.copyWith(fontWeight: FontWeight.bold),
-    ),
+    primaryColorDark: kSecondaryColorDark,
+    textTheme: _textTheme,
     appBarTheme: AppBarTheme(
-      color: kPrimaryColorDark,
+      color: kSecondaryColorLight,
+      textTheme: _textTheme,
       elevation: 0,
       centerTitle: true,
     ),
