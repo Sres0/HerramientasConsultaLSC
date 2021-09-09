@@ -23,6 +23,9 @@ EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
 EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(20);
 EdgeInsets kPrimaryEdgeInsetsSymmetric =
     EdgeInsets.symmetric(horizontal: 5, vertical: 10);
+EdgeInsets kSecondaryEdgeInsetsSymmetric =
+    EdgeInsets.symmetric(horizontal: 5, vertical: 0);
+double kPrimaryElevation = 6.0;
 
 //THEME DATA
 ThemeData themeData() {
