@@ -14,7 +14,6 @@ Color kOpacityColorDark = Colors.black38;
 
 //DEFAULT THINGS
 BorderRadius kprimaryBorderRadius = BorderRadius.circular(10);
-Radius ksecondaryBorderRadius = Radius.circular(10); //BYE
 EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
 EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(5);
 EdgeInsets kPrimaryEdgeInsetsSymmetric =
@@ -52,5 +51,11 @@ ThemeData themeData() {
       elevation: 0,
       centerTitle: true,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      primary: kPrimaryColorLight,
+      elevation: kPrimaryElevation,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
+    )),
   );
 }

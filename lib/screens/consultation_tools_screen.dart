@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/consultation_tools.dart';
 import '../constants/default_theme.dart';
+import '../widgets/gif_n_buttons.dart';
 import '../widgets/c_tools_card.dart';
 
 class ConsultationToolsScreen extends StatelessWidget {
@@ -18,15 +19,17 @@ class ConsultationToolsScreen extends StatelessWidget {
       body: Center(
         child: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.55,
                 child: GridView(
-                  // padding: kPrimaryEdgeInsetsSymmetric,
+                  padding: kPrimaryEdgeInsetsSymmetric,
                   children: CTOOLS.map((cat) => CToolCard(cat)).toList(),
                   gridDelegate: _gridDelegate,
                 ),
               ),
+              GifNButtons(),
             ],
           ),
         ),
