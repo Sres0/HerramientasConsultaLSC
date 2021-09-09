@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../models/c_tool.dart';
+// import '../constants/consultation_tools.dart';
 import '../constants/default_theme.dart';
+// import '../screens/waiting_room_screen.dart';
 
 class CToolCard extends StatelessWidget {
   final CTool _cTool;
@@ -10,8 +12,8 @@ class CToolCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _selectTool(_cTool) {
-      print(_cTool.title);
+    void _selectTool(CTool _cTool) {
+      Navigator.pushNamed(context, _cTool.id);
     }
 
     return InkWell(
