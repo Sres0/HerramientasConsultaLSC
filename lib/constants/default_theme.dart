@@ -13,7 +13,7 @@ const Color kReadColor = Colors.red;
 //PRIMARY COLORS
 Color kPrimaryColor = Colors.grey.shade700;
 Color kPrimaryColorLight = Colors.grey.shade300;
-Color kPrimaryColorDark = Colors.grey.shade900;
+Color kPrimaryColorDark = Colors.white;
 Color kOpacityColorDark = Colors.black38;
 
 //DEFAULT THINGS
@@ -30,7 +30,6 @@ double kPrimaryElevation = 6.0;
 //THEME DATA
 ThemeData themeData() {
   final TextStyle _textStyle = TextStyle(
-      fontFamily: 'Roboto',
       color: kPrimaryColorLight,
       shadows: [Shadow(offset: Offset.fromDirection(0, 1.5), blurRadius: 5)]);
 
@@ -40,7 +39,6 @@ ThemeData themeData() {
     primaryColor: kPrimaryColor,
     primaryColorLight: kPrimaryColorLight,
     primaryColorDark: kPrimaryColorDark,
-    fontFamily: 'Roboto',
     textTheme: TextTheme(
       headline4: _textStyle,
       headline5: _textStyle,

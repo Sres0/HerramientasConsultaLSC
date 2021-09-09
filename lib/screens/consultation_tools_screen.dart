@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/consultation_tools.dart';
-import '../constants/theme_data.dart';
+import '../constants/default_theme.dart';
 import '../widgets/c_tools_card.dart';
 
 class ConsultationToolsScreen extends StatelessWidget {
