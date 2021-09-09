@@ -1,17 +1,39 @@
 import 'package:flutter/material.dart';
 
-class ConsultationToolsScreen extends StatefulWidget {
+import '../constants/consultation_tools.dart';
+import '../constants/theme_data.dart';
+import '../widgets/c_tools_card.dart';
+
+class ConsultationToolsScreen extends StatelessWidget {
   static const routeName = '/consultation_tools';
-  const ConsultationToolsScreen();
 
-  @override
-  _ConsultationToolsScreenState createState() =>
-      _ConsultationToolsScreenState();
-}
-
-class _ConsultationToolsScreenState extends State<ConsultationToolsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Herramientas de consulta'));
+    var _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
+      mainAxisExtent: 200,
+      maxCrossAxisExtent: 300,
+      childAspectRatio: 4 / 3,
+      crossAxisSpacing: 4,
+      mainAxisSpacing: 4,
+    );
+
+    return Scaffold(
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.55,
+                child: GridView(
+                  padding: kPrimaryEdgeInsetsSymmetric,
+                  children: CTOOLS.map((cat) => CToolCard(cat)).toList(),
+                  gridDelegate: _gridDelegate,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
