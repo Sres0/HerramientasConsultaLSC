@@ -18,14 +18,14 @@ class ConsultationToolsScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.55,
                 child: GridView(
                   padding: kPrimaryEdgeInsetsSymmetric,
-                  children: CTOOLS.map((cat) => CToolCard(cat)).toList(),
+                  children: CTOOLS.map((tool) => CToolCard(tool)).toList(),
                   gridDelegate: _gridDelegate,
                 ),
               ),
