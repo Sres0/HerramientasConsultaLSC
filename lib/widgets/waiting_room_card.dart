@@ -4,50 +4,95 @@ import '../constants/default_theme.dart';
 import '../models/c_tools_waiting_room_items.dart';
 import '../screens/waiting_room_screen.dart';
 
-class WaitingRoomCard extends StatelessWidget {
+class WaitingRoomCard extends StatefulWidget {
   final double cardHeight;
+
+  const WaitingRoomCard(this.cardHeight);
+
+  @override
+  _WaitingRoomCardState createState() => _WaitingRoomCardState();
+}
+
+class _WaitingRoomCardState extends State<WaitingRoomCard> {
   final WaitingRoomItem _voice = WaitingRoomItem.Voice;
   final WaitingRoomItem _turn = WaitingRoomItem.Turn;
   final WaitingRoomItem _call = WaitingRoomItem.Call;
   final WaitingRoomItem _sit = WaitingRoomItem.Sit;
 
-  const WaitingRoomCard(this.cardHeight);
-
   @override
   Widget build(BuildContext context) {
     final _userContent = SingleChildScrollView(
       child: Container(
+        padding: kPrimaryEdgeInsets,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _voice.displayIcon,
-            Text(_voice.displayText),
-          ], //Haven't found a better way to do this
+            _voice.unselectedIcon,
+            Sub1Text(_voice.displayText),
+          ],
         ),
       ),
     );
-    final _personelContent = SingleChildScrollView(
+    // final _healthPersonnelContent = SingleChildScrollView(
+    //   child: Container(
+    //     padding: kPrimaryEdgeInsets,
+    //     child: Expanded(
+    //       child: Column(
+    //         children: [
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //             children: [
+    //               _turn.unselectedIcon,
+    //               _call.unselectedIcon,
+    //               _sit.unselectedIcon,
+    //             ],
+    //           ),
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //             children: [
+    //               Sub1Text(_turn.displayText),
+    //               Sub1Text(_call.displayText),
+    //               Sub1Text(_sit.displayText),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
+    final _personnelContent = SingleChildScrollView(
+      //oh well
       child: Container(
+        padding: kPrimaryEdgeInsets,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Column(
-              children: [
-                _turn.displayIcon,
-                Text(_turn.displayText),
-              ],
+            Expanded(
+              child: Column(
+                children: [
+                  _turn.unselectedIcon,
+                  Sub1Text(_turn.displayText),
+                ],
+              ),
             ),
-            Column(
-              children: [
-                _call.displayIcon,
-                Text(_call.displayText),
-              ],
+            SizedBox(width: 15),
+            Expanded(
+              child: Column(
+                children: [
+                  _call.unselectedIcon,
+                  Sub1Text(_call.displayText + '\n'), //I mean
+                ],
+              ),
             ),
-            Column(
-              children: [
-                _sit.displayIcon,
-                Text(_sit.displayText),
-              ],
+            SizedBox(width: 15),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _sit.unselectedIcon,
+                  Sub1Text(_sit.displayText),
+                ],
+              ),
             ),
           ],
         ),
@@ -68,7 +113,7 @@ class WaitingRoomCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: kprimaryBorderRadius,
                 child: Image(
-                  height: cardHeight * 1 / 3,
+                  height: widget.cardHeight * 1 / 3,
                   width: double.infinity,
                   fit: BoxFit.cover,
                   image: AssetImage(
@@ -76,9 +121,9 @@ class WaitingRoomCard extends StatelessWidget {
                 ),
               ),
               Sub1Text(' '),
-              WaitingRoomCardContainer(cardHeight, _userContent),
+              WaitingRoomCardContainer(widget.cardHeight, _userContent),
               Sub1Text('Usuario'),
-              WaitingRoomCardContainer(cardHeight, _personelContent),
+              WaitingRoomCardContainer(widget.cardHeight, _personnelContent),
               Sub1Text('Personal de salud'),
             ],
           ),
@@ -90,8 +135,9 @@ class WaitingRoomCard extends StatelessWidget {
 
 class Sub1Text extends StatelessWidget {
   final String _text;
+  final TextAlign textAlign;
 
-  const Sub1Text(this._text);
+  const Sub1Text(this._text, {this.textAlign = TextAlign.center});
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +145,9 @@ class Sub1Text extends StatelessWidget {
 
     return Text(
       _text,
-      textAlign: TextAlign.left,
+      textAlign: textAlign,
       style: _textTheme.subtitle1 as TextStyle,
+      softWrap: true,
     );
   }
 }

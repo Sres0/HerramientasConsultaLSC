@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/default_theme.dart';
+
 enum WaitingRoomItem {
   Voice,
   Turn,
@@ -21,32 +23,57 @@ extension ItemExtension on WaitingRoomItem {
     }
   }
 
-  IconButton get displayIcon {
+  IconButton get unselectedIcon {
     switch (this) {
       case WaitingRoomItem.Voice:
         return IconButton(
-          iconSize: 30,
+          color: kPrimaryColorLight,
+          splashColor: kPrimaryColorLight,
+          iconSize: 40,
           icon: Icon(Icons.volume_up_rounded),
           onPressed: () => print('voice'),
         );
       case WaitingRoomItem.Turn:
         return IconButton(
-          iconSize: 30,
+          color: kPrimaryColorDark,
+          splashColor: kPrimaryColorLight,
+          iconSize: 40,
           icon: Icon(Icons.confirmation_num),
           onPressed: () => print('Turn'),
         );
       case WaitingRoomItem.Call:
         return IconButton(
-          iconSize: 30,
+          color: kPrimaryColorDark,
+          splashColor: kPrimaryColorLight,
+          iconSize: 40,
           icon: Icon(Icons.headset_mic_rounded),
           onPressed: () => print('Call'),
         );
       case WaitingRoomItem.Sit:
         return IconButton(
-          iconSize: 30,
+          color: kPrimaryColorDark,
+          splashColor: kPrimaryColorLight,
+          iconSize: 40,
           icon: Icon(Icons.chair),
           onPressed: () => print('Sit'),
         );
     }
+  }
+}
+
+class WRItemIconButton extends StatelessWidget {
+  final Color _color;
+  final VoidCallback _onPressed;
+  const WRItemIconButton(this._color, this._onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      color: _color,
+      splashColor: kPrimaryColorLight,
+      iconSize: 40,
+      icon: Icon(Icons.volume_up_rounded),
+      onPressed: () => _onPressed,
+    );
   }
 }

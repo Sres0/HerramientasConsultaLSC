@@ -5,16 +5,11 @@ import 'package:flutter/material.dart';
 import '../widgets/gif_n_buttons.dart';
 import '../widgets/waiting_room_card.dart';
 
-class WaitingRoomScreen extends StatefulWidget {
+class WaitingRoomScreen extends StatelessWidget {
   static const routeName = 'sala_espera';
 
   const WaitingRoomScreen();
 
-  @override
-  _WaitingRoomScreenState createState() => _WaitingRoomScreenState();
-}
-
-class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
   @override
   Widget build(BuildContext context) {
     final _cardHeight = MediaQuery.of(context).size.height * 0.55;
