@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:herramientas/main.dart';
-import 'package:herramientas/screens/waiting_room_screen.dart';
 
+import '../main.dart';
+import '../screens/response_tools_screen.dart';
+import '../screens/waiting_room_screen.dart';
 import '../models/c_tool.dart';
 // import '../constants/consultation_tools.dart';
 import '../constants/default_theme.dart';
@@ -28,7 +29,7 @@ class CToolCard extends StatelessWidget {
           _page = MyHomePage();
           break;
         case 'herramientas_respuesta':
-          _page = MyHomePage();
+          _page = ResponseToolsScreen();
           break;
       }
       Navigator.push(context, CupertinoPageRoute(builder: (_) => _page));

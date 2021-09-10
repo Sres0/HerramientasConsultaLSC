@@ -20,3 +20,22 @@ const List<CTool> CTOOLS = const [
   BACKGROUND_REPORT,
   RESPONSE_TOOLS,
 ];
+
+const CTool NUMERIC_ANSWER = CTool(
+  'respuesta_numerica',
+  'Respuesta numérica',
+);
+const CTool PAIN_SCALE = CTool(
+  'escala_dolor',
+  'Escala de dolor',
+);
+const CTool SPELL_ANSWER = CTool(
+  'respuesta_deletreo',
+  'Respuesta de deletreo',
+);
+
+const List<CTool> RESPONSETOOLS = const [
+  NUMERIC_ANSWER,
+  PAIN_SCALE,
+  SPELL_ANSWER,
+];
