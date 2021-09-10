@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants/default_theme.dart';
-import '../models/c_tools_waiting_room_items.dart';
 import '../screens/waiting_room_screen.dart';
 
 class WaitingRoomCard extends StatefulWidget {
@@ -14,10 +13,46 @@ class WaitingRoomCard extends StatefulWidget {
 }
 
 class _WaitingRoomCardState extends State<WaitingRoomCard> {
-  final WaitingRoomItem _voice = WaitingRoomItem.Voice;
-  final WaitingRoomItem _turn = WaitingRoomItem.Turn;
-  final WaitingRoomItem _call = WaitingRoomItem.Call;
-  final WaitingRoomItem _sit = WaitingRoomItem.Sit;
+  bool _isVoiceSelected = false;
+  bool _isTurnSelected = false;
+  bool _isCallSelected = false;
+  bool _isSitSelected = false;
+
+  void selectIcon(String iconName) {
+    if (iconName == 'voice') {
+      print('voice');
+      setState(() {
+        _isVoiceSelected = !_isVoiceSelected;
+        _isTurnSelected = false;
+        _isCallSelected = false;
+        _isSitSelected = false;
+      });
+    } else if (iconName == 'turn') {
+      print('turn');
+      setState(() {
+        _isVoiceSelected = false;
+        _isTurnSelected = true;
+        _isCallSelected = false;
+        _isSitSelected = false;
+      });
+    } else if (iconName == 'call') {
+      print('call');
+      setState(() {
+        _isVoiceSelected = false;
+        _isTurnSelected = false;
+        _isCallSelected = true;
+        _isSitSelected = false;
+      });
+    } else if (iconName == 'sit') {
+      print('sit');
+      setState(() {
+        _isVoiceSelected = false;
+        _isTurnSelected = false;
+        _isCallSelected = false;
+        _isSitSelected = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,39 +62,17 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _voice.unselectedIcon,
-            Sub1Text(_voice.displayText),
+            WRItemIconButton(
+              selectedStatus: _isVoiceSelected,
+              onPressed: () => selectIcon('voice'),
+              icon: Icons.volume_up_rounded,
+            ),
+            Sub1Text('Mensaje de voz'),
           ],
         ),
       ),
     );
-    // final _healthPersonnelContent = SingleChildScrollView(
-    //   child: Container(
-    //     padding: kPrimaryEdgeInsets,
-    //     child: Expanded(
-    //       child: Column(
-    //         children: [
-    //           Row(
-    //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //             children: [
-    //               _turn.unselectedIcon,
-    //               _call.unselectedIcon,
-    //               _sit.unselectedIcon,
-    //             ],
-    //           ),
-    //           Row(
-    //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //             children: [
-    //               Sub1Text(_turn.displayText),
-    //               Sub1Text(_call.displayText),
-    //               Sub1Text(_sit.displayText),
-    //             ],
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
+
     final _personnelContent = SingleChildScrollView(
       //oh well
       child: Container(
@@ -70,8 +83,11 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
             Expanded(
               child: Column(
                 children: [
-                  _turn.unselectedIcon,
-                  Sub1Text(_turn.displayText),
+                  WRItemIconButton(
+                      selectedStatus: _isTurnSelected,
+                      onPressed: () => selectIcon('turn'),
+                      icon: Icons.confirmation_number_rounded),
+                  Sub1Text('Espera tu turno'),
                 ],
               ),
             ),
@@ -79,8 +95,11 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
             Expanded(
               child: Column(
                 children: [
-                  _call.unselectedIcon,
-                  Sub1Text(_call.displayText + '\n'), //I mean
+                  WRItemIconButton(
+                      selectedStatus: _isCallSelected,
+                      onPressed: () => selectIcon('call'),
+                      icon: Icons.headset_mic_rounded),
+                  Sub1Text('Yo te llamo\n'), //I mean
                 ],
               ),
             ),
@@ -89,8 +108,11 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  _sit.unselectedIcon,
-                  Sub1Text(_sit.displayText),
+                  WRItemIconButton(
+                      selectedStatus: _isSitSelected,
+                      onPressed: () => selectIcon('sit'),
+                      icon: Icons.chair),
+                  Sub1Text('Espera sentado'),
                 ],
               ),
             ),
@@ -129,6 +151,29 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class WRItemIconButton extends StatelessWidget {
+  final bool selectedStatus;
+  final VoidCallback onPressed;
+  final IconData icon;
+
+  const WRItemIconButton({
+    required this.selectedStatus,
+    required this.onPressed,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      color: selectedStatus ? kPrimaryColorLight : kPrimaryColorDark,
+      splashColor: kPrimaryColorLight,
+      iconSize: selectedStatus ? 50 : 40, //no se sale
+      icon: Icon(icon),
+      onPressed: onPressed,
     );
   }
 }
