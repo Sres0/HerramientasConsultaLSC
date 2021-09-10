@@ -12,4 +12,5 @@ Home en la mitad ??
 No appbar -> transparente para tabs
 Headline6 no responsive
 Faltan doble click
+https://www.youtube.com/watch?v=lul0yekp6bg BNB
 '''

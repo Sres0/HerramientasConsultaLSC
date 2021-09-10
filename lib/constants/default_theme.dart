@@ -4,20 +4,20 @@ import 'package:hexcolor/hexcolor.dart';
 //PRIMARY COLORS
 Color kPrimaryColor = HexColor('0e1b4d');
 Color kPrimaryColorLight = HexColor('46b6c2');
+Color kPrimaryColorDark = HexColor('4a5b64');
 Color kSecondaryColor = HexColor('c4c4c4');
 Color kSecondaryColorDark = Colors.black;
 Color kSecondaryColorLight = Colors.white;
 Color kAccentColor = HexColor('442c2e');
 
-Color kPrimaryColorDark = Colors.grey.shade900;
-Color kOpacityColorDark = Colors.black38;
-
 //DEFAULT THINGS
 BorderRadius kprimaryBorderRadius = BorderRadius.circular(10);
 EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
-EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(5);
+EdgeInsets kSecondaryEdgeInsets = EdgeInsets.all(20);
 EdgeInsets kPrimaryEdgeInsetsSymmetric =
     EdgeInsets.symmetric(horizontal: 5, vertical: 10);
+EdgeInsets kSecondaryEdgeInsetsSymmetric =
+    EdgeInsets.symmetric(horizontal: 10, vertical: 5);
 double kPrimaryElevation = 8.0;
 
 //THEME DATA
