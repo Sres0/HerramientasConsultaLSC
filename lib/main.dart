@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'constants/default_theme.dart';
 import 'screens/profile_screen.dart';
@@ -16,12 +17,26 @@ class MyApp extends StatelessWidget {
       theme: themeData(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(),
+        // '/': (ctx) => TabsScreen(),
+        '/': (ctx) => CupertinoTabsScreen(),
         MyHomePage.routeName: (ctx) => MyHomePage(),
         ConsultationToolsScreen.routeName: (ctx) => ConsultationToolsScreen(),
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
         WaitingRoomScreen.routeName: (ctx) => WaitingRoomScreen(),
       },
+      // onGenerateRoute: (RouteSettings settings) {
+      //   late Widget page;
+      //   switch (settings.name) {
+      //     case WaitingRoomScreen.routeName:
+      //       {
+      //         page = WaitingRoomScreen();
+      //       }
+      //   }
+      //   return CupertinoPageRoute(
+      //     builder: (context) => page,
+      //     settings: settings,
+      //   );
+      // },
     );
   }
 }
@@ -32,6 +47,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Home'));
+    return Scaffold(
+        // appBar: AppBar(title: Text('Inicio')),
+        body: Center(child: Text('Home')));
   }
 }

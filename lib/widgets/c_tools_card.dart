@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:herramientas/screens/waiting_room_screen.dart';
 
 import '../models/c_tool.dart';
 // import '../constants/consultation_tools.dart';
@@ -13,7 +15,9 @@ class CToolCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _selectTool(CTool _cTool) {
-      Navigator.pushNamed(context, _cTool.id);
+      // Navigator.pushNamed(context, _cTool.id);
+      Navigator.push(
+          context, CupertinoPageRoute(builder: (_) => WaitingRoomScreen()));
     }
 
     return InkWell(

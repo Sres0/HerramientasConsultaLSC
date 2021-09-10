@@ -135,7 +135,7 @@ class _WaitingRoomCardState extends State<WaitingRoomCard> {
               ClipRRect(
                 borderRadius: kprimaryBorderRadius,
                 child: Image(
-                  height: widget.cardHeight * 1 / 3,
+                  height: widget.cardHeight * 1 / 4,
                   width: double.infinity,
                   fit: BoxFit.cover,
                   image: AssetImage(

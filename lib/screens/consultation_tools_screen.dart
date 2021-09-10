@@ -16,6 +16,7 @@ class ConsultationToolsScreen extends StatelessWidget {
     );
 
     return Scaffold(
+      appBar: AppBar(title: Text('Herramientas de consulta')),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
