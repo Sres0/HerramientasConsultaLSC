@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:herramientas/main.dart';
 import 'package:herramientas/screens/waiting_room_screen.dart';
 
 import '../models/c_tool.dart';
@@ -15,9 +16,22 @@ class CToolCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _selectTool(CTool _cTool) {
-      // Navigator.pushNamed(context, _cTool.id);
-      Navigator.push(
-          context, CupertinoPageRoute(builder: (_) => WaitingRoomScreen()));
+      late Widget _page;
+      switch (_cTool.id) {
+        case 'sala_espera':
+          _page = WaitingRoomScreen();
+          break;
+        case 'reporte_motivo_consulta':
+          _page = MyHomePage();
+          break;
+        case 'reporte_antecedentes':
+          _page = MyHomePage();
+          break;
+        case 'herramientas_respuesta':
+          _page = MyHomePage();
+          break;
+      }
+      Navigator.push(context, CupertinoPageRoute(builder: (_) => _page));
     }
 
     return InkWell(
