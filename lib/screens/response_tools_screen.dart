@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:herramientas/models/c_tool.dart';
 import 'package:herramientas/constants/consultation_tools.dart';
 import 'package:herramientas/constants/default_theme.dart';
-import 'package:herramientas/models/c_tool.dart';
+import 'package:herramientas/widgets/r_tools_card.dart';
 import 'package:herramientas/widgets/gif_n_buttons.dart';
+import 'package:herramientas/main.dart';
 
 class ResponseToolsScreen extends StatelessWidget {
   static const routeName = 'herramientas_respuesta';
@@ -11,6 +14,21 @@ class ResponseToolsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _mediaQuerySize = MediaQuery.of(context).size;
+    void _selectTool(CTool _rTool) {
+      late Widget _page;
+      switch (_rTool.id) {
+        case 'respuesta_numerica':
+          _page = MyHomePage();
+          break;
+        case 'escala_dolor':
+          _page = MyHomePage();
+          break;
+        case 'respuesta_deletreo':
+          _page = MyHomePage();
+          break;
+      }
+      Navigator.push(context, CupertinoPageRoute(builder: (_) => _page));
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -19,6 +37,7 @@ class ResponseToolsScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(
               child: Container(
@@ -26,67 +45,13 @@ class ResponseToolsScreen extends StatelessWidget {
                 child: ListView(
                   padding: kPrimaryEdgeInsets,
                   children: RESPONSETOOLS
-                      .map((tool) => ResponseToolCard(tool))
+                      .map((tool) => ResponseToolCard(tool, _selectTool))
                       .toList(),
                 ),
               ),
             ),
             GifNButtons(),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ResponseToolCard extends StatelessWidget {
-  final CTool tool;
-  const ResponseToolCard(this.tool);
-
-  @override
-  Widget build(BuildContext context) {
-    final _mediaQuerySize = MediaQuery.of(context).size;
-    final _cardHeight = _mediaQuerySize.height * 0.12;
-    return InkWell(
-      onTap: () => print('hi'),
-      splashColor: kPrimaryColorLight,
-      borderRadius: kprimaryBorderRadius,
-      child: Card(
-        elevation: kPrimaryElevation,
-        margin: kPrimaryEdgeInsetsSymmetric,
-        shape: RoundedRectangleBorder(borderRadius: kprimaryBorderRadius),
-        color: kSecondaryColorLight,
-        child: Container(
-          height: _cardHeight,
-          padding: kPrimaryEdgeInsets,
-          child: Center(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: kprimaryBorderRadius,
-                    child: Image(
-                      image: AssetImage('images/r_tools_' + tool.id + '.jpg'),
-                      height: _cardHeight * 0.75,
-                      width: _cardHeight * 0.75,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: _mediaQuerySize.width * 0.1),
-                  Expanded(
-                    child: Container(
-                      child: Text(
-                        tool.title,
-                        style: Theme.of(context).textTheme.subtitle1,
-                        softWrap: true,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
         ),
       ),
     );
