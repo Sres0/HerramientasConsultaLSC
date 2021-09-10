@@ -1,16 +1,59 @@
 import 'package:flutter/material.dart';
 
 import '../constants/default_theme.dart';
+import '../models/c_tools_waiting_room_items.dart';
 import '../screens/waiting_room_screen.dart';
 
 class WaitingRoomCard extends StatelessWidget {
   final double cardHeight;
+  final WaitingRoomItem _voice = WaitingRoomItem.Voice;
+  final WaitingRoomItem _turn = WaitingRoomItem.Turn;
+  final WaitingRoomItem _call = WaitingRoomItem.Call;
+  final WaitingRoomItem _sit = WaitingRoomItem.Sit;
 
   const WaitingRoomCard(this.cardHeight);
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
+    final _userContent = SingleChildScrollView(
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _voice.displayIcon,
+            Text(_voice.displayText),
+          ], //Haven't found a better way to do this
+        ),
+      ),
+    );
+    final _personelContent = SingleChildScrollView(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              children: [
+                _turn.displayIcon,
+                Text(_turn.displayText),
+              ],
+            ),
+            Column(
+              children: [
+                _call.displayIcon,
+                Text(_call.displayText),
+              ],
+            ),
+            Column(
+              children: [
+                _sit.displayIcon,
+                Text(_sit.displayText),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+
     return Card(
       margin: kSecondaryEdgeInsets,
       elevation: kPrimaryElevation,
@@ -32,28 +75,32 @@ class WaitingRoomCard extends StatelessWidget {
                       'images/c_tools_' + WaitingRoomScreen.routeName + '.jpg'),
                 ),
               ),
-              Text(
-                ' ',
-                textAlign: TextAlign.left,
-                style: _textTheme.subtitle1 as TextStyle,
-              ),
-              WaitingRoomCardContainer(cardHeight, Text('Voz')),
-              Text(
-                'Usuario',
-                textAlign: TextAlign.left,
-                style: _textTheme.subtitle1 as TextStyle,
-              ),
-              WaitingRoomCardContainer(
-                  cardHeight, Text('Turno, llamada, silla')),
-              Text(
-                'Personal de salud',
-                textAlign: TextAlign.left,
-                style: _textTheme.subtitle1 as TextStyle,
-              ),
+              Sub1Text(' '),
+              WaitingRoomCardContainer(cardHeight, _userContent),
+              Sub1Text('Usuario'),
+              WaitingRoomCardContainer(cardHeight, _personelContent),
+              Sub1Text('Personal de salud'),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class Sub1Text extends StatelessWidget {
+  final String _text;
+
+  const Sub1Text(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    final _textTheme = Theme.of(context).textTheme;
+
+    return Text(
+      _text,
+      textAlign: TextAlign.left,
+      style: _textTheme.subtitle1 as TextStyle,
     );
   }
 }
